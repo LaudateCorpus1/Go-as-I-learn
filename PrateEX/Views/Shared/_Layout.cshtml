@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Zhen's App</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Great Pirate", "Index", "Pirate", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin Menu</a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Pirate", "ShowPirates", "Pirate")</li>
+                            <li>@Html.ActionLink("Crew", "ShowCrew", "Pirate")</li>
+                            <li>@Html.ActionLink("Ship", "ShowShips", "Pirate")</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <input id="pirate" type="text" style="width:100px; margin:5px" />
+                <input style="margin:5px" type="submit" id="search" class="btn btn-success" value="Search Pirate" />
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div class="page-header"><h1 class="text-danger">Pirate Is Coming</h1></div>
+        <div class="col-sm-9 col-lg-9 col-md-9">
+            @RenderBody()
+        </div>
+        <div class="col-sm-3 col-lg-3 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <a href="#" id="pir" data-sent="Pirate" class="panel-title">Pirate</a>
+                    <a href="#" id="cre" data-sent="Crew" class="panel-title">Crew</a>
+                    <a href="#" id="shi" data-sent="Ship" class="panel-title">Ship</a>
+                    <a href="#" id="boo" data-sent="Booty" class="panel-title">Booty</a>
+                </div>
+
+                <div class="panel-body text-center" id="showdata"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" id="showp"></div>
+   
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Zhen's App</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/myScripts.js"></script>
+</body>
+</html>

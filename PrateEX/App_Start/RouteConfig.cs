@@ -14,6 +14,12 @@ namespace PrateEX
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Config",
+                url: "Home/{id}",
+                defaults: new { controller = "Pirate", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Pirate", action = "Index", id = UrlParameter.Optional }
